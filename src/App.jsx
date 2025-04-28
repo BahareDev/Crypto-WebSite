@@ -1,12 +1,5 @@
+import Login from "./Login";
 
-
-function App() {
-  return (
-    <>
-
-    </>
-
-  )
+export default function App() {
+  return <Login />;
 }
-
-export default App

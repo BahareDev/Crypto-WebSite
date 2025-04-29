@@ -1,3 +1,4 @@
+import CryptoDetail from "./pages/CryptoDetail";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -7,6 +8,7 @@ export default function App() {
     <Routes>
       <Route path="/login" element={<Login />} />
       <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/detail/:id" element={<CryptoDetail />} />
 
       <Route path="login">
         <Route path="*" element={<Login />} />

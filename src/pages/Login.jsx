@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { useAuth } from "./context/AuthContext";
+import { useAuth } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   const { login, loading } = useAuth();
@@ -7,15 +8,16 @@ export default function Login() {
   const [pass, setPass] = useState("");
   const [error, setError] = useState("");
 
+  const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     setError("");
 
     try {
-      await login(email, password);
-      console.log("successfuly");
-
-      // navigate("/dashboard");
+      await login(email, pass);
+      navigate("/dashboard");
     } catch (err) {
       setError(err.message);
     }
@@ -24,14 +26,14 @@ export default function Login() {
   return (
     <>
       <div>
-        <h2>Login</h2>
+        <h2 className="text-center font-bold my-4">Login</h2>
 
-        <div className="flex gap-4 flex-col bg-red-500">
-          <form>
+        <div className="">
+          <form onSubmit={handleSubmit} className="flex flex-col gap-4 p-4 ">
             <input
               type="text"
               placeholder="username /email"
-              className="border"
+              className="rounded-sm border border-gray-400 p-1"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -39,14 +41,13 @@ export default function Login() {
               type="password"
               value={pass}
               placeholder="password"
-              className="border"
+              className="rounded-sm border border-gray-400 p-1"
               onChange={(e) => setPass(e.target.value)}
             />
             <button
               type="submit"
-              className="bg-blue-400 border cursor-pointer"
+              className="bg-blue-400 cursor-pointer rounded-sm p-2 hover:bg-blue-300 text-white"
               disabled={loading}
-              onClick={handleSubmit}
             >
               {loading ? "logging in ..." : "login"}
             </button>

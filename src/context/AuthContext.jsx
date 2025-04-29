@@ -7,16 +7,16 @@ export default function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const login = async (email, password) => {
+  const login = async (email, pass) => {
     setLoading(true);
 
     // Calling Api ( we don't have so fake it)
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
-    if (email === "user@gmail.com" && password === "456") {
+    if (email === "user@gmail.com" && pass === "456") {
       setUser({ email, role: "user" });
     } else {
-      throw new Error("Invalid ");
+      throw new Error("Invalid");
     }
     setLoading(false);
   };

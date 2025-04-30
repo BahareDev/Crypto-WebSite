@@ -66,7 +66,7 @@ export default function Dashboard() {
           </div>
         </div>
 
-        <Table info={data} rowsPerPage={5} />
+        <Table info={data} rowsPerPage={50} />
       </div>
     </>
   );

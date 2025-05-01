@@ -78,10 +78,7 @@ export default function Dashboard() {
       }
       return 0;
     });
-    console.log(
-      "After sorting:",
-      sortedData.map((item) => item.createdAt)
-    ); // Debugging log
+
     setFilterData(sortedData);
   };
   return (

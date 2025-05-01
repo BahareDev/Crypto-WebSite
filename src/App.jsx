@@ -8,7 +8,7 @@ export default function App() {
     <Routes>
       <Route path="/login" element={<Login />} />
       <Route path="/dashboard" element={<Dashboard />} />
-      <Route path="/detail/:id" element={<CryptoDetail />} />
+      <Route path="/currency/:_id" element={<CryptoDetail />} />
 
       <Route path="login">
         <Route path="*" element={<Login />} />

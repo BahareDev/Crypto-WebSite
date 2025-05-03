@@ -2,36 +2,16 @@ import React, { useEffect, useState } from "react";
 import Table from "../component/Table";
 import { useAuth } from "../context/AuthContext";
 import { Navigate } from "react-router-dom";
-import axios from "axios";
 import SearchBar from "../component/SearchBar";
+import useAPi from "../hooks/useApi";
 
 export default function Dashboard() {
   const { user } = useAuth();
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const { data, loading, error, filterData, setFilterData } = useAPi();
+
   const [query, setQuery] = useState("");
-  const [filterData, setFilterData] = useState([]);
 
   let debounceTimeout;
-  useEffect(() => {
-    axios
-      .get("https://api.aliramshini.com/api/coin/")
-      .then((response) => {
-        setData(response.data.coins);
-        setLoading(false);
-      })
-      .catch((error) => {
-        setError(error.message);
-        setLoading(false);
-      });
-  }, []);
-
-  useEffect(() => {
-    if (data.length > 0) {
-      setFilterData(data); // Initialize filterData with all data
-    }
-  }, [data]);
 
   if (!user)
     return (

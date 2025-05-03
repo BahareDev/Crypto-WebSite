@@ -11,6 +11,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+import useAPi from "../hooks/useApi";
 
 ChartJS.register(
   LineElement,
@@ -23,10 +24,11 @@ ChartJS.register(
 );
 
 function CurrencyDetail() {
-  const { _id } = useParams();
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  const { _id } = useParams();
 
   useEffect(() => {
     axios

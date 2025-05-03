@@ -5,15 +5,23 @@ import { ToastContainer, toast } from "react-toastify";
 
 export default function Login() {
   const navigate = useNavigate();
-  const { login, loading } = useAuth();
+  const { login } = useAuth();
 
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError("");
+    setError(null); // Clear previous errors
+    setLoading(true);
+
+    if (!email.trim() || !pass.trim()) {
+      toast.error("Please enter both email and password");
+      setLoading(false);
+      return;
+    }
 
     try {
       await login(email, pass);
@@ -24,6 +32,7 @@ export default function Login() {
     } catch (err) {
       setError(err.message);
       toast.error("Login failed:" + err.message);
+      setLoading(false);
     }
   };
 
@@ -35,13 +44,15 @@ export default function Login() {
           <p className=" font-bold text-gray-500">
             Welcome to <span className="text-violet-500">Crypto List</span>
           </p>
-          <p className="mb-4 mt-2 text-gray-400 text-sm">please Enter your info</p>
+          <p className="mb-4 mt-2 text-gray-400 text-sm">
+            please Enter your info
+          </p>
         </div>
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-4  ">
           <div className="flex items-center gap-2 border rounded-sm p-2 justify-between border-gray-400 ">
             <input
-              type="text"
+              type="email"
               placeholder="username /email"
               className="focus:outline-0 w-full"
               value={email}
@@ -92,7 +103,7 @@ export default function Login() {
             className="text-white bg-violet-800 cursor-pointer rounded-sm p-2 hover:bg-white hover:border border-violet-800 hover:text-violet-800"
             disabled={loading}
           >
-            login
+            {loading ? "Logging in..." : "Login"}
           </button>
         </form>
         <ToastContainer />

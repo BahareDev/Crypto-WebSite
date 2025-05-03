@@ -39,7 +39,11 @@ export default function Dashboard() {
       return;
     }
     const filtered = data.filter((item) => {
-      return item.currency.toLowerCase().includes(query.toLowerCase().trim());
+      return (
+        item.currency?.toLowerCase().includes(query.toLowerCase().trim()) ||
+        item.fullname?.toLowerCase().includes(query.toLowerCase().trim()) ||
+        item.faName?.toLowerCase().includes(query.toLowerCase().trim())
+      );
     });
 
     setFilterData(filtered);

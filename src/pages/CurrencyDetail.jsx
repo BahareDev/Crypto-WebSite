@@ -89,8 +89,34 @@ function CurrencyDetail() {
 
   return (
     <>
-      <div>{data.currency}</div>
-      <Line data={chartData} options={options} />
+      <div className="m-4 bg-white rounded-2xl p-4 space-y-5">
+        {/* <div className="bg-red-400"> back</div> */}
+        <div>
+          <h2 className="text-2xl">
+            {" "}
+            More Detail about {data.currency} ({data.symbol})
+          </h2>
+          <div className="text-gray-400">
+            Buy {data.fullname} - {data.faName}
+          </div>
+
+          <div className="py-4">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque alias
+            minus, dolor quae dolorum mollitia modi recusandae quis consequuntur
+            minima expedita laudantium fuga nam sit, nulla maxime corrupti ab
+            libero?
+          </div>
+        </div>
+
+        <button className="bg-violet-500 p-2 rounded-xl text-white px-8">
+          Buy
+        </button>
+        <div></div>
+        <div>{data.isWithdrawEnabled}</div>
+      </div>
+      <div className="mt-4">
+        <Line data={chartData} options={options} />
+      </div>
     </>
   );
 }

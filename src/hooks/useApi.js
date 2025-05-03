@@ -8,6 +8,9 @@ const useAPi = () => {
   const [filterData, setFilterData] = useState([]);
 
   useEffect(() => {
+    setLoading(true); // Start loading
+    setError(null); // Clear previous errors
+
     axios
       .get("https://api.aliramshini.com/api/coin/")
       .then((response) => {

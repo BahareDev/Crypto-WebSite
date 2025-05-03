@@ -7,7 +7,6 @@ const AuthContext = createContext();
 export default function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  // const notify = () => toast("Wow so easy!");
 
   const login = async (email, pass) => {
     setLoading(true);

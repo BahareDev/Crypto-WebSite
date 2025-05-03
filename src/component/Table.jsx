@@ -52,34 +52,44 @@ export default function Table({ info, rowsPerPage, Sort }) {
         </thead>
 
         <tbody>
-          {slice.map((item) => (
-            <tr
-              key={item._id}
-              className="bg-white border-b border-gray-200 hover:bg-gray-50 "
-            >
-              <th
-                scope="row"
-                className="p-4 py-4 font-medium text-gray-900 whitespace-nowrap "
+          {slice.length > 0 ? (
+            slice.map((item) => (
+              <tr
+                key={item._id}
+                className="bg-white border-b border-gray-200 hover:bg-gray-50 "
               >
-                <Link to={`/currency/${item._id}`}>
-                  <span className="underline hover:font-bold">
-                    {item.currency}
-                  </span>
-                </Link>
-              </th>
+                <th
+                  scope="row"
+                  className="p-4 py-4 font-medium text-gray-900 whitespace-nowrap "
+                >
+                  <Link to={`/currency/${item._id}`}>
+                    <span className="underline hover:font-bold">
+                      {item.currency}
+                    </span>
+                  </Link>
+                </th>
 
-              <td className="px-6 py-4">{item.provider}</td>
-              <td className="px-6 py-4">{item.symbol}</td>
-              <td className="px-6 py-4">
-                {new Date(item.createdAt).toLocaleDateString("en-US", {
-                  year: "numeric",
-                  month: "short",
-                  day: "numeric",
-                })}
+                <td className="px-6 py-4">{item.provider}</td>
+                <td className="px-6 py-4">{item.symbol}</td>
+                <td className="px-6 py-4">
+                  {new Date(item.createdAt).toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "short",
+                    day: "numeric",
+                  })}
+                </td>
+                <td className="px-6 py-4">
+                  {item.tradeEnabled ? "Yes" : "No"}
+                </td>
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td colSpan="5" className="text-center p-4">
+                No Result Found
               </td>
-              <td className="px-6 py-4">{item.tradeEnabled ? "Yes" : "No"}</td>
             </tr>
-          ))}
+          )}
         </tbody>
       </table>
 

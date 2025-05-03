@@ -1,43 +1,32 @@
 import { useEffect, useState } from "react";
 
-// const calculateRange = (currentPage, totalPage) => {
-//   const dlta = 2;
-//   const range = [];
-//   const rangeWithDots = [];
-//   let l;
+const calculateRange = (data, rowsPerPage, page) => {
+  const totalPages = Math.ceil(data.length / rowsPerPage);
+  const delta = 1;
 
-//   console.log("Calculating range for:", { currentPage, totalPage });
-
-//   for (let i = 1; i <= totalPage; i++) {
-//     if (
-//       i === 1 ||
-//       i === totalPage ||
-//       (i >= currentPage - dlta && i <= currentPage + dlta)
-//     ) {
-//       range.push(i);
-//     }
-//   }
-//   for (let i of range) {
-//     if (l) {
-//       if (i - l === 2) {
-//         rangeWithDots.push(l + 1);
-//       } else if (i - 1 !== 1) {
-//         rangeWithDots.push("...");
-//       }
-
-//       rangeWithDots.push(i);
-//       l = i;
-//     }
-//   }
-//   console.log("Range with dots:", rangeWithDots);
-//   return rangeWithDots;
-// };
-
-const calculateRange = (data, rowsPerPage) => {
   const range = [];
-  const num = Math.ceil(data.length / rowsPerPage);
-  for (let i = 1; i <= num; i++) {
-    range.push(i);
+  if (1 !== page - delta && page - delta > 2) {
+    range.push(1, "...");
+  } else {
+    for (let i = 1; i < page; i++) {
+      range.push(i);
+    }
+  }
+
+  for (
+    let i = Math.max(1, page - delta);
+    i <= Math.min(totalPages, page + delta);
+    i++
+  ) {
+    if (!range.includes(i)) range.push(i);
+  }
+
+  if (page + delta < totalPages - 1) {
+    range.push("...", totalPages);
+  } else {
+    for (let i = page + 1; i <= totalPages; i++) {
+      if (!range.includes(i)) range.push(i);
+    }
   }
   return range;
 };
@@ -51,12 +40,12 @@ const useTable = (data, page, rowsPerPage) => {
   const [slice, setSlice] = useState([]);
 
   useEffect(() => {
-    const range = calculateRange(data, rowsPerPage);
-    setTableRange([...range]);
+    const range = calculateRange(data, rowsPerPage, page);
+    setTableRange(range);
 
     const slice = sliceData(data, page, rowsPerPage);
-    setSlice([...slice]);
-  }, [data, setTableRange, page, setSlice]);
+    setSlice(slice);
+  }, [data, page, rowsPerPage]);
 
   return { slice, range: tableRange };
 };

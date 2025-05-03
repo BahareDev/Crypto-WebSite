@@ -58,7 +58,6 @@ export default function Dashboard() {
       setFilterData(data);
       return;
     }
-
     const filtered = data.filter((item) => {
       return item.currency.toLowerCase().includes(query.toLowerCase().trim());
     });
@@ -92,7 +91,7 @@ export default function Dashboard() {
           {/* SEARCH */}
           <SearchBar value={query} onChange={handleInputChange} />
 
-          <Table info={filterData} rowsPerPage={50} Sort={handleSort} />
+          <Table info={filterData} rowsPerPage={20} Sort={handleSort} />
         </div>
       </div>
     </>

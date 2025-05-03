@@ -83,13 +83,17 @@ export default function Dashboard() {
   };
   return (
     <>
-      <div>Welcome to the Dashboard</div>
+      <div className="m-8">
+        <div className="mb-4 text-violet-400 font-bold">
+          Welcome to the Dashboard
+        </div>
 
-      <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-        {/* SEARCH */}
-        <SearchBar value={query} onChange={handleInputChange} />
+        <div className="relative overflow-x-auto  sm:rounded-xl">
+          {/* SEARCH */}
+          <SearchBar value={query} onChange={handleInputChange} />
 
-        <Table info={filterData} rowsPerPage={50} Sort={handleSort} />
+          <Table info={filterData} rowsPerPage={50} Sort={handleSort} />
+        </div>
       </div>
     </>
   );

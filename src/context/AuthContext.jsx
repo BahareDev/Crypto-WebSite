@@ -1,11 +1,13 @@
 import { createContext, useContext, useState } from "react";
 import React from "react";
+import { ToastContainer, toast } from "react-toastify";
 
 const AuthContext = createContext();
 
 export default function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  // const notify = () => toast("Wow so easy!");
 
   const login = async (email, pass) => {
     setLoading(true);
@@ -16,7 +18,7 @@ export default function AuthProvider({ children }) {
     if (email === "user@gmail.com" && pass === "456") {
       setUser({ email, role: "user" });
     } else {
-      throw new Error("Invalid");
+      throw new Error("Invalid email or password");
     }
     setLoading(false);
   };

@@ -15,6 +15,7 @@ import {
 ChartJS.register(
   LineElement,
   CategoryScale,
+
   LinearScale,
   PointElement,
   Tooltip,
@@ -62,7 +63,7 @@ function CurrencyDetail() {
     labels,
     datasets: [
       {
-        label: `${data.name} Price`,
+        label: `${data.currency} Price`,
         data: priceHistory,
         fill: false,
         borderColor: "blue",

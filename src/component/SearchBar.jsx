@@ -2,10 +2,8 @@ import React, { useState } from "react";
 
 function SearchBar({ value, onChange }) {
   return (
-    <div className="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between pb-4">
-      <label htmlFor="table-search" className="sr-only">
-        Search
-      </label>
+    <div className="flex flex-column mx-8 sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between pb-4">
+      
       <div className="relative">
         <div className="absolute inset-y-0 left-0 rtl:inset-r-0 rtl:right-0 flex items-center ps-3 pointer-events-none">
           <svg

@@ -4,6 +4,7 @@ import React from "react";
 const AuthContext = createContext();
 
 export default function AuthProvider({ children }) {
+  const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(() => {
     try {
       const savedUser = localStorage.getItem("user");
@@ -14,7 +15,6 @@ export default function AuthProvider({ children }) {
       return null;
     }
   });
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     // Simulate auth state loading (can add real API check here)
@@ -24,7 +24,7 @@ export default function AuthProvider({ children }) {
   const login = async (email, pass) => {
     setLoading(true);
 
-    //// Fake API delay ( we don't have so fake it)
+    // Fake API delay ( we don't have so fake it)
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
     if (email === "user@gmail.com" && pass === "456") {

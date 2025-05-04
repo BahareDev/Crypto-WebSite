@@ -121,12 +121,31 @@ function CurrencyDetail() {
       </header>
       <div className="mx-auto px-4 py-6">
         <section className="bg-white rounded-xl m-8 p-4">
-          <div className="flex items-center justify-between ">
-            <div>
+          <div className="flex items-center justify-between font-bold">
+            <div className="">
               <h2>About {data.currency}</h2>
-              <span className="text-sm text-gray-400">
-                {data.fullname} - {data.faName}
-              </span>
+              <div className="flex items-center space-x-4">
+                <div className="text-sm text-gray-400">
+                  {data.fullname} - {data.faName}
+                </div>
+                <span class="flex space-x-2 text-green-700 price-change-up bg-green-100 px-2 py-1 rounded-full text-sm font-bold">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="size-4"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941"
+                    />
+                  </svg>
+                  <span>%2.4</span>
+                </span>
+              </div>
             </div>
             <div className="w-16 h-16 bg-violet-200 rounded-full flex items-center justify-center p-2 ">
               <img
@@ -200,6 +219,20 @@ function CurrencyDetail() {
         <section class="bg-white rounded-xl shadow-md p-4 mb-4 m-8 ">
           <div class="flex justify-between items-center mb-6">
             <h3 class="text-lg font-semibold text-violet-500">Price Chart</h3>
+            <div class="flex space-x-2">
+              <button class="px-3 py-1 bg-violet-100 text-violet-700 rounded-full text-sm font-medium">
+                1D
+              </button>
+              <button class="px-3 py-1 bg-violet-600 text-white rounded-full text-sm font-medium">
+                7D
+              </button>
+              <button class="px-3 py-1 bg-violet-100 text-violet-700 rounded-full text-sm font-medium">
+                1M
+              </button>
+              <button class="px-3 py-1 bg-violet-100 text-violet-700 rounded-full text-sm font-medium">
+                1Y
+              </button>
+            </div>
           </div>
           <div class="h-[450px] flex justify-center">
             <Line data={chartData} options={options} />

@@ -1,7 +1,7 @@
-✈️ Crypto-Website
+ 💸 Crypto-Website
 =====================
 
-Crypto-WebSite is a front-end web application designed to provide users with real-time cryptocurrency information, including prices, trends, and charts. The app features a responsive design and is built using modern JavaScript tooling, React
+Crypto-WebSite is a front-end web application designed to provide users with real-time cryptocurrency information, including prices, trends, and charts. The app features a responsive design and is built using modern JavaScript tooling, React using this [Currency API](https://api.aliramshini.com/api/coin)
 
 📚 Table of Contents
 --------------------
@@ -53,29 +53,25 @@ Here’s a list of planned improvements and optional challenges:
 
 ### Challenges
 
-### Challenge 1: 
+### Challenge 1: Fetching Real-Time Crypto Data
 
 **Problem:**  
-
+keeping API-related code inside components made them messy and harder to maintain.
 
 **Solution:**  
+A created a custom hook called useApi to separate API logic from the UI components. This hook handles loading, error, and data states in a reusable way. It made the codebase cleaner, easier to debug, and simplified how data is fetched throughout the app.
 
-```
 
 
-### ✨Future Improvements
+## ✨Future Improvements
 
-*   🔍 Advanced Filtering and Sorting
-Add filters for price range, market cap, and 24h volume, and enable sorting by name, price, and performance.
+*    🔍 Add filters for price range, market cap, and 24h volume, and enable sorting by name, price, and performance.
   
-*   🌙 Dark Mode Support
-Implement a dark/light theme toggle with user preference saved using localStorage.
+*    🌙 Implement a dark/light theme toggle with user preference saved using localStorage.
     
-*   🌐 Multi-Language Support
-Add localization to support multiple languages for global users.
+*    🌐 Add localization to support multiple languages for global users.
     
-*   🔐 Authentication and Watchlist
-Add user authentication so users can save a personal watchlist of their favorite cryptocurrencies.
+*    🔐 Add user authentication so users can save a personal watchlist of their favorite cryptocurrencies.
     
  ## Getting Started
 
@@ -109,7 +105,7 @@ The app will be running at [http://localhost:5173](http://localhost:5173).
 
 ## 🤝Contributing
  
-Contributions are welcome! If you have suggestions for improvements or find a bug, feel free to open an [issue](https://github.com/BahareDev/FlightInfo_Filter/issues) or submit a pull request.
+Contributions are welcome! If you have suggestions for improvements or find a bug, feel free to open an [issue](https://github.com/BahareDev/Crypto-website/issues) or submit a pull request.
 
 Steps:
 

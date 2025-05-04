@@ -24,8 +24,9 @@ export default function Login() {
     }
 
     try {
-      await login(email, pass);
+      const user = await login(email, pass);
       toast.success("login Sucess:");
+
       setTimeout(() => {
         navigate("/dashboard");
       }, 1000);

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Table from "../component/Table";
 import { useAuth } from "../context/AuthContext";
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import SearchBar from "../component/SearchBar";
 import useAPi from "../hooks/useApi";
 
@@ -51,7 +51,7 @@ export default function Dashboard() {
 
   const handleSort = (order) => {
     const sortedData = [...filterData].sort((a, b) => {
-      const dateA = a.createdAt ? new Date(a.createdAt) : new Date(0); 
+      const dateA = a.createdAt ? new Date(a.createdAt) : new Date(0);
       const dateB = b.createdAt ? new Date(b.createdAt) : new Date(0);
 
       if (order === "asc") {
@@ -67,8 +67,9 @@ export default function Dashboard() {
   return (
     <>
       <div className="m-8">
-        <div className="mb-4 text-violet-400 font-bold">
+        <div className="mb-4 text-violet-400 font-bold flex justify-between">
           Welcome to the Dashboard
+          <Link to="/tickets"> Support </Link>
         </div>
 
         <div className="relative overflow-x-auto  sm:rounded-xl">
